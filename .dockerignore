@@ -1,0 +1,20 @@
+# Runtime
+audio_cache/
+bin/
+data/
+logs/
+mythic_music/__pycache__/
+mythic_music/lib/__pycache__/
+
+# Docker
+.dockerignore
+Dockerfile
+
+# Git
+.git/
+.gitattributes
+.gitignore
+
+# IDE
+.idea/
+.vscode/
