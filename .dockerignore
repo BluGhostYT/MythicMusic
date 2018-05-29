@@ -3,8 +3,8 @@ audio_cache/
 bin/
 data/
 logs/
-mythic_music/__pycache__/
-mythic_music/lib/__pycache__/
+mythicmusic/__pycache__/
+mythicmusic/lib/__pycache__/
 
 # Docker
 .dockerignore

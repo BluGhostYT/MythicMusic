@@ -19,7 +19,7 @@ class Config:
         config = configparser.ConfigParser(interpolation=None)
         config.read(config_file, encoding='utf-8')
 
-        confsections = {"Credentials", "Permissions", "Chat", "Mythic_Music"}.difference(config.sections())
+        confsections = {"Credentials", "Permissions", "Chat", "MythicMusic"}.difference(config.sections())
         if confsections:
             raise HelpfulError(
                 "One or more required config sections are missing.",
@@ -47,28 +47,28 @@ class Config:
         self.bound_channels = config.get('Chat', 'BindToChannels', fallback=ConfigDefaults.bound_channels)
         self.autojoin_channels =  config.get('Chat', 'AutojoinChannels', fallback=ConfigDefaults.autojoin_channels)
 
-        self.default_volume = config.getfloat('Mythic_Music', 'DefaultVolume', fallback=ConfigDefaults.default_volume)
-        self.skips_required = config.getint('Mythic_Music', 'SkipsRequired', fallback=ConfigDefaults.skips_required)
-        self.skip_ratio_required = config.getfloat('Mythic_Music', 'SkipRatio', fallback=ConfigDefaults.skip_ratio_required)
-        self.save_videos = config.getboolean('Mythic_Music', 'SaveVideos', fallback=ConfigDefaults.save_videos)
-        self.now_playing_mentions = config.getboolean('Mythic_Music', 'NowPlayingMentions', fallback=ConfigDefaults.now_playing_mentions)
-        self.auto_summon = config.getboolean('Mythic_Music', 'AutoSummon', fallback=ConfigDefaults.auto_summon)
-        self.auto_playlist = config.getboolean('Mythic_Music', 'UseAutoPlaylist', fallback=ConfigDefaults.auto_playlist)
-        self.auto_playlist_random = config.getboolean('Mythic_Music', 'AutoPlaylistRandom', fallback=ConfigDefaults.auto_playlist_random)
-        self.auto_pause = config.getboolean('Mythic_Music', 'AutoPause', fallback=ConfigDefaults.auto_pause)
-        self.delete_messages = config.getboolean('Mythic_Music', 'DeleteMessages', fallback=ConfigDefaults.delete_messages)
-        self.delete_invoking = config.getboolean('Mythic_Music', 'DeleteInvoking', fallback=ConfigDefaults.delete_invoking)
-        self.persistent_queue = config.getboolean('Mythic_Music', 'PersistentQueue', fallback=ConfigDefaults.persistent_queue)
-        self.status_message = config.get('Mythic_Music', 'StatusMessage', fallback=ConfigDefaults.status_message)
-        self.write_current_song = config.getboolean('Mythic_Music', 'WriteCurrentSong', fallback=ConfigDefaults.write_current_song)
-        self.allow_author_skip = config.getboolean('Mythic_Music', 'AllowAuthorSkip', fallback=ConfigDefaults.allow_author_skip)
-        self.use_experimental_equalization = config.getboolean('Mythic_Music', 'UseExperimentalEqualization', fallback=ConfigDefaults.use_experimental_equalization)
-        self.embeds = config.getboolean('Mythic_Music', 'UseEmbeds', fallback=ConfigDefaults.embeds)
-        self.queue_length = config.getint('Mythic_Music', 'QueueLength', fallback=ConfigDefaults.queue_length)
-        self.remove_ap = config.getboolean('Mythic_Music', 'RemoveFromAPOnError', fallback=ConfigDefaults.remove_ap)
-        self.show_config_at_start = config.getboolean('Mythic_Music', 'ShowConfigOnLaunch', fallback=ConfigDefaults.show_config_at_start)
+        self.default_volume = config.getfloat('MythicMusic', 'DefaultVolume', fallback=ConfigDefaults.default_volume)
+        self.skips_required = config.getint('MythicMusic', 'SkipsRequired', fallback=ConfigDefaults.skips_required)
+        self.skip_ratio_required = config.getfloat('MythicMusic', 'SkipRatio', fallback=ConfigDefaults.skip_ratio_required)
+        self.save_videos = config.getboolean('MythicMusic', 'SaveVideos', fallback=ConfigDefaults.save_videos)
+        self.now_playing_mentions = config.getboolean('MythicMusic', 'NowPlayingMentions', fallback=ConfigDefaults.now_playing_mentions)
+        self.auto_summon = config.getboolean('MythicMusic', 'AutoSummon', fallback=ConfigDefaults.auto_summon)
+        self.auto_playlist = config.getboolean('MythicMusic', 'UseAutoPlaylist', fallback=ConfigDefaults.auto_playlist)
+        self.auto_playlist_random = config.getboolean('MythicMusic', 'AutoPlaylistRandom', fallback=ConfigDefaults.auto_playlist_random)
+        self.auto_pause = config.getboolean('MythicMusic', 'AutoPause', fallback=ConfigDefaults.auto_pause)
+        self.delete_messages = config.getboolean('MythicMusic', 'DeleteMessages', fallback=ConfigDefaults.delete_messages)
+        self.delete_invoking = config.getboolean('MythicMusic', 'DeleteInvoking', fallback=ConfigDefaults.delete_invoking)
+        self.persistent_queue = config.getboolean('MythicMusic', 'PersistentQueue', fallback=ConfigDefaults.persistent_queue)
+        self.status_message = config.get('MythicMusic', 'StatusMessage', fallback=ConfigDefaults.status_message)
+        self.write_current_song = config.getboolean('MythicMusic', 'WriteCurrentSong', fallback=ConfigDefaults.write_current_song)
+        self.allow_author_skip = config.getboolean('MythicMusic', 'AllowAuthorSkip', fallback=ConfigDefaults.allow_author_skip)
+        self.use_experimental_equalization = config.getboolean('MythicMusic', 'UseExperimentalEqualization', fallback=ConfigDefaults.use_experimental_equalization)
+        self.embeds = config.getboolean('MythicMusic', 'UseEmbeds', fallback=ConfigDefaults.embeds)
+        self.queue_length = config.getint('MythicMusic', 'QueueLength', fallback=ConfigDefaults.queue_length)
+        self.remove_ap = config.getboolean('MythicMusic', 'RemoveFromAPOnError', fallback=ConfigDefaults.remove_ap)
+        self.show_config_at_start = config.getboolean('MythicMusic', 'ShowConfigOnLaunch', fallback=ConfigDefaults.show_config_at_start)
 
-        self.debug_level = config.get('Mythic_Music', 'DebugLevel', fallback=ConfigDefaults.debug_level)
+        self.debug_level = config.get('MythicMusic', 'DebugLevel', fallback=ConfigDefaults.debug_level)
         self.debug_level_str = self.debug_level
         self.debug_mode = False
 
@@ -126,7 +126,7 @@ class Config:
             raise HelpfulError(
                 "No bot token was specified in the config.",
                 "As of v1.0, you are required to use a Discord bot account. "
-                "See https://github.com/BluGhostYT/Mythic_Music/wiki for info.",
+                "See https://github.com/BluGhostYT/MythicMusic/wiki for info.",
                 preface=self._confpreface
             )
 

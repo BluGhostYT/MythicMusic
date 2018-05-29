@@ -47,7 +47,7 @@ class Yikes:
             sys.meta_path.pop(0)
             return __import__('requests')
 
-        import_chain = tuple(self._get_import_chain(until='from .bot import Mythic_Music'))
+        import_chain = tuple(self._get_import_chain(until='from .bot import MythicMusic'))
         import_tb = self._format_import_chain(import_chain)
 
         raise HelpfulError(
@@ -71,10 +71,10 @@ class Yikes:
 
 sys.meta_path.insert(0, Yikes())
 
-from .bot import Mythic_Music
+from .bot import MythicMusic
 from .constructs import BetterLogRecord
 
-__all__ = ['Mythic_Music']
+__all__ = ['MythicMusic']
 
 logging.setLogRecordFactory(BetterLogRecord)
 
@@ -110,7 +110,7 @@ _add_logger_level('VOICEDEBUG', 6)
 log = logging.getLogger(__name__)
 log.setLevel(logging.EVERYTHING)
 
-fhandler = logging.FileHandler(filename='logs/mythic_music.log', encoding='utf-8', mode='a')
+fhandler = logging.FileHandler(filename='logs/MythicMusic.log', encoding='utf-8', mode='a')
 fhandler.setFormatter(logging.Formatter(
     "[{relativeCreated:.16f}] {asctime} - {levelname} - {name} | "
     "In {filename}::{threadName}({thread}), line {lineno} in {funcName}: {message}",

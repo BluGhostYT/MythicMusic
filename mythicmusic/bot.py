@@ -48,10 +48,10 @@ load_opus_lib()
 log = logging.getLogger(__name__)
 
 
-class Mythic_Music(discord.Client):
+class MythicMusic(discord.Client):
     def __init__(self, config_file=None, perms_file=None):
         try:
-            sys.stdout.write("\x1b]2;Mythic_Music\x07")
+            sys.stdout.write("\x1b]2;MythicMusic\x07")
         except:
             pass
 

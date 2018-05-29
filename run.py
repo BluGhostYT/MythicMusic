@@ -140,16 +140,16 @@ log.addHandler(tfh)
 
 
 def finalize_logging():
-    if os.path.isfile("logs/mythic_music.log"):
+    if os.path.isfile("logs/mythicmusic.log"):
         log.info("Moving old Mythic Music log")
         try:
-            if os.path.isfile("logs/mythic_music.log.last"):
-                os.unlink("logs/mythic_music.log.last")
-            os.rename("logs/mythic_music.log", "logs/mythic_music.log.last")
+            if os.path.isfile("logs/mythicmusic.log.last"):
+                os.unlink("logs/mythicmusic.log.last")
+            os.rename("logs/mythicmusic.log", "logs/mythicmusic.log.last")
         except:
             pass
 
-    with open("logs/mythic_music.log", 'w', encoding='utf8') as f:
+    with open("logs/mythicmusic.log", 'w', encoding='utf8') as f:
         tmpfile.seek(0)
         f.write(tmpfile.read())
         tmpfile.close()
@@ -162,7 +162,7 @@ def finalize_logging():
     log.removeHandler(tfh)
     del tfh
 
-    fh = logging.FileHandler("logs/mythic_music.log", mode='a')
+    fh = logging.FileHandler("logs/mythicmusic.log", mode='a')
     fh.setFormatter(logging.Formatter(
         fmt="[%(relativeCreated).9f] %(name)s-%(levelname)s: %(message)s"
     ))
@@ -283,22 +283,22 @@ def req_ensure_env():
 
     try:
         assert os.path.isdir('config'), 'folder "config" not found'
-        assert os.path.isdir('mythic_music'), 'folder "mythic_music" not found'
-        assert os.path.isfile('mythic_music/__init__.py'), 'mythic_music folder is not a Python module'
+        assert os.path.isdir('mythicmusic'), 'folder "mythicmusic" not found'
+        assert os.path.isfile('mythicmusic/__init__.py'), 'mythicmusic folder is not a Python module'
 
-        assert importlib.util.find_spec('mythic_music'), "mythic_music module is not importable"
+        assert importlib.util.find_spec('mythicmusic'), "mythicmusic module is not importable"
     except AssertionError as e:
         log.critical("Failed environment check, %s", e)
         bugger_off()
 
     try:
-        os.mkdir('mythic_music-test-folder')
+        os.mkdir('mythicmusic-test-folder')
     except Exception:
         log.critical("Current working directory does not seem to be writable")
         log.critical("Please move the bot to a folder that is writable")
         bugger_off()
     finally:
-        rmtree('mythic_music-test-folder', True)
+        rmtree('mythicmusic-test-folder', True)
 
     if sys.platform.startswith('win'):
         log.info("Adding local bins/ folder to path")
@@ -344,8 +344,8 @@ def main():
 
         m = None
         try:
-            from mythic_music import Mythic_Music
-            m = Mythic_Music()
+            from mythicmusic import MythicMusic
+            m = MythicMusic()
 
             sh.terminator = ''
             sh.terminator = '\n'
@@ -381,7 +381,7 @@ def main():
                 break
 
         except Exception as e:
-            if hasattr(e, '__module__') and e.__module__ == 'mythic_music.exceptions':
+            if hasattr(e, '__module__') and e.__module__ == 'mythicmusic.exceptions':
                 if e.__class__.__name__ == 'HelpfulError':
                     log.info(e.message)
                     break

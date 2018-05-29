@@ -54,7 +54,7 @@ def main():
 
 
     try:
-        from Mythic_Music.constants import VERSION
+        from MythicMusic.constants import VERSION
         print('Mythic Music is at version {0}'.format(VERSION))
     except Exception:
         pass

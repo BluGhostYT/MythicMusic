@@ -18,8 +18,8 @@ install:
 - if [ "$TYPE" = "build" ]; then ./.travis/install.sh; fi;
 
 script:
-- if [ "$TYPE" = "docker" ]; then docker build -t mythic_music .; docker images -a; fi;
-- if [ "$TYPE" = "build" ]; then python -m compileall ./mythic_music; fi;
+- if [ "$TYPE" = "docker" ]; then docker build -t mythicmusic .; docker images -a; fi;
+- if [ "$TYPE" = "build" ]; then python -m compileall ./mythicmusic; fi;
 
 after_success:
-- if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASS"; docker tag mythic_music blughostyt/mythic_music:$TRAVIS_BRANCH ; docker push blughostyt/mythic_music; fi;
+- if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASS"; docker tag mythicmusic blughostyt/mythicmusic:$TRAVIS_BRANCH ; docker push blughostyt/mythicmusic; fi;

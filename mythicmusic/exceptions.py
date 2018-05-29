@@ -2,7 +2,7 @@ import shutil
 import textwrap
 
 # Base class for exceptions
-class Mythic_MusicException(Exception):
+class MythicMusicException(Exception):
     def __init__(self, message, *, expire_in=0):
         super().__init__(message) # ???
         self._message = message
@@ -17,11 +17,11 @@ class Mythic_MusicException(Exception):
         return self._message
 
 # Something went wrong during the processing of a command
-class CommandError(Mythic_MusicException):
+class CommandError(MythicMusicException):
     pass
 
 # Something went wrong during the processing of a song/ytdl stuff
-class ExtractionError(Mythic_MusicException):
+class ExtractionError(MythicMusicException):
     pass
 
 # The no processing entry type failed and an entry was a playlist/vice versa
@@ -33,15 +33,15 @@ class WrongEntryTypeError(ExtractionError):
         self.use_url = use_url
 
 # FFmpeg complained about something
-class FFmpegError(Mythic_MusicException):
+class FFmpegError(MythicMusicException):
     pass
 
 # FFmpeg complained about something but we don't care
-class FFmpegWarning(Mythic_MusicException):
+class FFmpegWarning(MythicMusicException):
     pass
 
 # Some issue retrieving something from Spotify's API
-class SpotifyError(Mythic_MusicException):
+class SpotifyError(MythicMusicException):
     pass
 
 # The user doesn't have permission to use a command
@@ -51,7 +51,7 @@ class PermissionsError(CommandError):
         return "You don't have permission to use that command.\nReason: " + self._message
 
 # Error with pretty formatting for hand-holding users through various errors
-class HelpfulError(Mythic_MusicException):
+class HelpfulError(MythicMusicException):
     def __init__(self, issue, solution, *, preface="An error has occured:", footnote='', expire_in=0):
         self.issue = issue
         self.solution = solution
